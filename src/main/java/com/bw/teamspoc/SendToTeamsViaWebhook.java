@@ -1,4 +1,4 @@
-package com.infor.teams;
+package com.bw.teamspoc;
 
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;

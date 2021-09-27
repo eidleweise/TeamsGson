@@ -1,10 +1,10 @@
-package com.infor.teams;
+package com.bw.teamspoc;
 
+import com.bw.teamspoc.entities.Section;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.infor.teams.entities.HeroImage;
-import com.infor.teams.entities.MessageCard;
-import com.infor.teams.entities.Section;
+import com.bw.teamspoc.entities.HeroImage;
+import com.bw.teamspoc.entities.MessageCard;
 
 import java.util.ArrayList;
 import java.util.List;
