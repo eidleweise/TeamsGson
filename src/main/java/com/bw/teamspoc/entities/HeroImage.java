@@ -1,4 +1,4 @@
-package com.infor.teams.entities;
+package com.bw.teamspoc.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder(builderClassName = "Builder")
-public class Section {
-    private final HeroImage heroImage;
+public class HeroImage {
+    private String image;
 }

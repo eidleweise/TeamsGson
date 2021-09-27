@@ -1,4 +1,4 @@
-package com.infor.teams;
+package com.bw.teamspoc;
 
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;

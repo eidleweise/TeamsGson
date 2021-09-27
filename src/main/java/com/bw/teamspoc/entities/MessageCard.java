@@ -1,4 +1,4 @@
-package com.infor.teams.entities;
+package com.bw.teamspoc.entities;
 
 import lombok.*;
 
