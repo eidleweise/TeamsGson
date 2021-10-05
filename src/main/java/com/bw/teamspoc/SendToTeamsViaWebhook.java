@@ -1,10 +1,12 @@
 package com.bw.teamspoc;
 
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +27,12 @@ public class SendToTeamsViaWebhook {
 			httpPost.setHeader("Accept", "application/json");
 			httpPost.setHeader("Content-type", "application/json");
 
-			client.execute(httpPost);
+			final CloseableHttpResponse response = client.execute(httpPost);
+			final StatusLine statusLine = response.getStatusLine();
+			System.out.println(statusLine.getStatusCode() + " " + statusLine.getReasonPhrase());
+			String responseBody = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+			System.out.println("Response body: " + responseBody);
+
 			client.close();
 		} catch (IOException e) {
 			e.printStackTrace();
