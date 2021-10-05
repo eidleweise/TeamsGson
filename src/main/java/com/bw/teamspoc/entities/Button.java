@@ -9,9 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder(builderClassName = "Builder")
-public class HeroImage {
-    private final String image;
-    private final String url;
-    private final String summary;
-    private final String text;
+public class Button {
+	private final String type;
+	private final String title;
+	private final String value;
+	private final String summary;
+	private final String text;
 }
