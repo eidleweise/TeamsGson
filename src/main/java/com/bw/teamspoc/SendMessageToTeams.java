@@ -12,7 +12,7 @@ import com.bw.teamspoc.entities.MessageCard;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamGson {
+public class SendMessageToTeams {
 
     /**
      * {
