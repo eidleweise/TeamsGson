@@ -1,5 +1,6 @@
 package com.bw.teamspoc;
 
+import com.bw.ReadFiles;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -17,7 +18,7 @@ import java.util.stream.Stream;
 
 public class SendToTeamsViaWebhook {
 	public static void sendJsonString(final String jsonString) {
-		final String webhookUrl = readWebhookUrl();
+		final String webhookUrl = ReadFiles.readWebhookUrl("teamswebhookurl.txt");
 		final CloseableHttpClient client = HttpClients.createDefault();
 		final HttpPost httpPost = new HttpPost(webhookUrl);
 
@@ -37,17 +38,5 @@ public class SendToTeamsViaWebhook {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static String readWebhookUrl() {
-		StringBuilder contentBuilder = new StringBuilder();
-
-		URI filePath;
-		try (Stream<String> stream = Files.lines( Paths.get("webhookurl.txt"), StandardCharsets.UTF_8)) {
-			stream.forEach(s -> contentBuilder.append(s).append("\n"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return contentBuilder.toString().trim();
 	}
 }
