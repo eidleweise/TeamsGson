@@ -1,4 +1,6 @@
 webhookurl.txt
 slackwebhookurl.txt
 teamswebhookurl.txt
+slackBotToken.txt
+slackSigningSecret.txt
 /target/
