@@ -15,4 +15,5 @@ public class HeroCard {
 	private final HeroCardContent content;
 	private final String summary;
 	private final String text;
+	private final String text2;
 }
