@@ -1,13 +1,9 @@
 package com.bw.teamspoc;
 
-import com.bw.teamspoc.entities.Button;
-import com.bw.teamspoc.entities.HeroCard;
-import com.bw.teamspoc.entities.HeroCardContent;
-import com.bw.teamspoc.entities.Section;
+import com.bw.teamspoc.entities.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.bw.teamspoc.entities.HeroImage;
-import com.bw.teamspoc.entities.MessageCard;
+import com.slack.api.model.Im;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +40,12 @@ public class SendMessageToTeams {
 
     public static void main(String[] args) {
         HeroImage image = HeroImage.builder().image("https://hddesktopwallpapers.in/wp-content/uploads/2015/08/duck-cute-wallpaper.jpg").build();
-        Section heroSection = Section.builder().heroImage(image).build();
+        Image im2 = Image.builder().image("data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7\n").build();
+        List<Image> images = new ArrayList<Image>();
+        images.add(im2);
+
+
+        Section heroSection = Section.builder().images(images).build();
         List<Section> sections = new ArrayList<Section>();
         sections.add(heroSection);
 
@@ -62,8 +63,8 @@ public class SendMessageToTeams {
                 .build();
 
         HeroImage heroImage  = HeroImage.builder()
-                .image("https://d33wubrfki0l68.cloudfront.net/e7ed9fe4bafe46e275c807d63591f85f9ab246ba/e2d28/assets/images/tux.png")
-                .text("Image Text")
+                .image("data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7\n")
+                .text("Image Text binary data")
                 .build();
         List<HeroImage> heroImages = new ArrayList<>();
         heroImages.add(heroImage);
@@ -98,12 +99,12 @@ public class SendMessageToTeams {
                 .build();
 
 
-        System.out.println("messageCard = " + hereoMessageCard);
+        System.out.println("messageCard = " + messageCard);
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        String jsonString = gson.toJson(hereoMessageCard);
+        String jsonString = gson.toJson(messageCard);
         System.out.println("jsonString = " + jsonString);
         SendToTeamsViaWebhook.sendJsonString(jsonString);
         System.out.println("Sent to Teams");
