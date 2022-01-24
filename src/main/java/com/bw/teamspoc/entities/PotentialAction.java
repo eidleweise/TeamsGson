@@ -18,6 +18,10 @@
  */
 package com.bw.teamspoc.entities;
 
+import java.util.List;
+
+import com.google.gson.annotations.SerializedName;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,10 +31,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder(builderClassName = "Builder")
-public class Button {
+public class PotentialAction {
+
+	@SerializedName(value = "@type")
 	private final String type;
-	private final String title;
-	private final String value;
-	private final String summary;
-	private final String text;
+	private final String name;
+	private final List<Target> targets;
 }
