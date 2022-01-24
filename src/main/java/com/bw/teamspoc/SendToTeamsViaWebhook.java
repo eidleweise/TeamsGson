@@ -21,6 +21,7 @@ package com.bw.teamspoc;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import com.bw.ReadFiles;
 import org.apache.http.StatusLine;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -31,11 +32,9 @@ import org.apache.http.util.EntityUtils;
 
 public class SendToTeamsViaWebhook {
 	public static void sendJsonString(final String jsonString) {
-//		final String webhookUrl = ReadFiles.readWebhookUrl("teamswebhookurl.txt");
-		final String pocWebhookUrl = "https://inforonline.webhook.office.com/webhookb2/8cf0ceef-c64e-44d8-9509-c1ba2f487bac@457d5685-0467-4d05-b23b-8f817adda47c/IncomingWebhook/8e57c533c8ab4954a2c89782b8ce5d71/ad997e79-bb46-4e12-adb1-000497a03a62";
-		final String demoWebhookUrl = "https://inforonline.webhook.office.com/webhookb2/8cf0ceef-c64e-44d8-9509-c1ba2f487bac@457d5685-0467-4d05-b23b-8f817adda47c/IncomingWebhook/1acfbeabc9d14ae4b8940593c56aa98b/ad997e79-bb46-4e12-adb1-000497a03a62";
+		final String webhookUrl = ReadFiles.readWebhookUrl("teamswebhookurl.txt");
 		final CloseableHttpClient client = HttpClients.createDefault();
-		final HttpPost httpPost = new HttpPost(pocWebhookUrl);
+		final HttpPost httpPost = new HttpPost(webhookUrl);
 
 		try {
 			final StringEntity entity = new StringEntity(jsonString);
